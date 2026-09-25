@@ -71,7 +71,7 @@ import com.nfcshare.app.utils.Sharing
                 labels.forEachIndexed { index, label -> NavigationBarItem(selected = tab == index, onClick = { if(index == 1 && tab != 1) model.startScan(); tab = index }, icon = { Icon(icons[index], null) }, label = { Text(label) }) }
             } }
         ) { padding ->
-            Box(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding), contentAlignment = Alignment.TopCenter) {
+            Box(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).imePadding(), contentAlignment = Alignment.TopCenter) {
                 Box(Modifier.widthIn(max = 720.dp).fillMaxSize()) {
                     Crossfade(targetState = route, label = "screen") { screen ->
                         when(screen) {
