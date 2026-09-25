@@ -2,6 +2,16 @@
 
 Una app Android para leer etiquetas NFC públicas, crear contenido NDEF y compartir tus propios datos. Interfaz en español, Material 3, acento naranja, funcionamiento local y Android 16 como plataforma objetivo.
 
+## Capturas reales
+
+Capturadas durante la prueba de interfaz en un emulador Android 16. El emulador no tiene radio NFC.
+
+<p>
+  <img src="docs/screenshots/home-light.png" width="240" alt="Inicio, tema claro" />
+  <img src="docs/screenshots/home-dark.png" width="240" alt="Inicio, tema oscuro" />
+  <img src="docs/screenshots/qr.png" width="240" alt="QR de un perfil creado en la prueba" />
+</p>
+
 ## Descargar el APK
 
 En [Actions → Build Android APK](https://github.com/joelhuevadas-creator/NFCShare/actions/workflows/build-apk.yml), abre la última ejecución exitosa y descarga **Artifacts → NFCShare-debug**. Descomprime el archivo para obtener `app-debug.apk`. GitHub puede solicitar iniciar sesión para descargar artifacts. Es una compilación de depuración, no una versión firmada para Google Play.
@@ -90,6 +100,8 @@ HCE no es un canal cifrado ni autenticado: úsalo para datos que quieras entrega
 ## Pruebas
 
 JUnit y Robolectric cubren parsing NDEF real, conversiones, payloads inválidos, límites de bytes, Wi-Fi TLV, APDU HCE, revocación de sesiones, y persistencia/renombrado/favoritos/borrado selectivo de Room. Consulta [la matriz de verificación física](docs/TESTING.md) para las pruebas que requieren etiquetas y dos teléfonos. Una compilación o un emulador no validan la radio NFC física.
+
+Verificación realizada: **34 tests locales aprobados**, lint sin errores, APK compilado y una prueba de interfaz completa aprobada en API 36 (perfil → vista previa → QR → recreación de pantalla → favorito → temas). El estado de los workflows está disponible en Actions.
 
 ## Release: APK y AAB
 

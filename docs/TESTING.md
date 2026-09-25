@@ -6,6 +6,25 @@
 
 Los tests locales con Robolectric usan API 35; la app compila y apunta a API 36. Los tests JVM validan lógica, no el hardware del teléfono.
 
+## Resultado de esta entrega
+
+- JDK 17, compileSdk 36, targetSdk 36 y minSdk 29 verificados en el APK.
+- `testDebugUnitTest lintDebug assembleDebug`: **BUILD SUCCESSFUL**. 34 tests, 0 fallos; lint: 0 errores. Las advertencias son de versiones de dependencias y compatibilidad de recursos/atributos.
+- Firma debug del APK comprobada con `apksigner`.
+- Workflow **Build Android APK** ejecutado con éxito en GitHub, con artifact `NFCShare-debug`.
+- `AppFlowTest.createProfilePreviewQrPersistAndTheme`: **OK (1 test)** en emulador Android 16/API 36. Valida creación, vista previa, QR, persistencia tras recreación de actividad, favoritos y cambio de tema. Capturas en `docs/screenshots`.
+- Arranque observado a 1080×2400; recorrido automatizado a 720×1600 con densidad 280. El emulador no expone NFC.
+
+### Repetir la prueba de interfaz
+
+Utiliza un emulador de pruebas con instalación limpia (el test crea un perfil llamado «Mi sitio»). No uses un teléfono con datos que quieras conservar.
+
+```sh
+./gradlew connectedDebugAndroidTest
+```
+
+Para repetirla en el mismo emulador, borra primero los datos de NFCShare desde Ajustes del emulador. Las capturas se escriben en el directorio externo privado de la app, `files/screenshots`.
+
 ## Matriz física pendiente
 
 Estas comprobaciones requieren un teléfono Android 16, etiquetas reales y, para HCE, un segundo teléfono compatible. No deben darse por aprobadas solo porque el APK compile.

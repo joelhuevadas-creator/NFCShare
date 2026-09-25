@@ -25,7 +25,7 @@ class AppFlowTest {
         compose.onNode(hasSetTextAction() and hasText("Nombre")).performTextInput("Mi sitio")
         compose.onNode(hasSetTextAction() and hasText("https://tu-pagina.com")).performTextInput("https://example.com")
         compose.onNodeWithText("Vista previa").performScrollTo().performClick()
-        compose.onNodeWithText("https://example.com").assertIsDisplayed()
+        compose.onNode(hasText("https://example.com") and hasAnyAncestor(isDialog())).assertIsDisplayed()
         compose.onNodeWithText("Volver").performClick()
         compose.onNodeWithText("Guardar perfil").performScrollTo().performClick()
         compose.waitUntil(10_000) { compose.onAllNodesWithText("Mi sitio").fetchSemanticsNodes().isNotEmpty() }
