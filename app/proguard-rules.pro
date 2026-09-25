@@ -1,0 +1,2 @@
+-keep class com.nfcshare.app.domain.** { *; }
+-keepattributes Signature

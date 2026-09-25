@@ -1,0 +1,12 @@
+<resources>
+    <style name="Theme.NFCShare" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:colorAccent">#E96300</item>
+        <item name="android:windowBackground">#FAF9F6</item>
+    </style>
+    <string name="app_name">NFCShare</string>
+    <string name="hce_description">Compartir un perfil propio de NFCShare</string>
+    <color name="icon_background">#171B20</color>
+</resources>
