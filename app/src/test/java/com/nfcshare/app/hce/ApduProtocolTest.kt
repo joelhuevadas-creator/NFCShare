@@ -33,4 +33,12 @@ class ApduProtocolTest {
         assertEquals("6985", Hex.encode(service.process(ApduProtocol.readCommand(0, 1))))
     }
     @Test fun oversizedProfileRejected() { assertEquals("6A82", Hex.encode(ApduProtocol { ByteArray(32769) }.process(ApduProtocol.SELECT))) }
+    @Test fun changingProfileRequiresNewSelection() {
+        var data = byteArrayOf(1, 2)
+        val service = ApduProtocol { data }; service.process(ApduProtocol.SELECT)
+        data = byteArrayOf(3, 4)
+        assertEquals("6985", Hex.encode(service.process(ApduProtocol.readCommand(0, 2))))
+        assertEquals("00029000", Hex.encode(service.process(ApduProtocol.SELECT)))
+        assertEquals("03049000", Hex.encode(service.process(ApduProtocol.readCommand(0, 2))))
+    }
 }

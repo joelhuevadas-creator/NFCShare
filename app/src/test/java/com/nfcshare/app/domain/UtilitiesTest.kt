@@ -19,4 +19,9 @@ class UtilitiesTest {
         assertThrows(IllegalArgumentException::class.java) { WifiCodec.encode("é".repeat(17), "12345678", false) }
         assertThrows(IllegalArgumentException::class.java) { WifiCodec.encode("red", "1234567", false) }
     }
+    @Test fun profileDoesNotRetainUnusedWifiPasswords() {
+        assertEquals("", Draft(kind = ContentKind.TEXT, password = "secreto").forStorage().password)
+        assertEquals("", Draft(kind = ContentKind.WIFI, openWifi = true, password = "secreto").forStorage().password)
+        assertEquals("12345678", Draft(kind = ContentKind.WIFI, password = "12345678").forStorage().password)
+    }
 }

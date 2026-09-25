@@ -66,4 +66,11 @@ class NdefCodecTest {
     @Test fun wifiQrEscapesSpecialCharacters() {
         assertEquals("WIFI:T:WPA;S:a\\;b;P:abc\\:defghi;;", NdefFactory.shareText(Draft(kind = ContentKind.WIFI, ssid = "a;b", password = "abc:defghi")))
     }
+    @Test fun malformedWifiNeverLeaksRawPayloadIntoHistory() {
+        val record = NdefRecord.createMime("application/vnd.wfa.wsc", "secreto-invalido".toByteArray())
+        val parsed = NdefParser.parse(NdefMessage(arrayOf(record))).single()
+        assertTrue(parsed.sensitive)
+        assertFalse(ScanResult("Wi-Fi", listOf(parsed)).forStorage().summary.contains("secreto-invalido"))
+        assertFalse(parsed.content.contains("Hex:"))
+    }
 }

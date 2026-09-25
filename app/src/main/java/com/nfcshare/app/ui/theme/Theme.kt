@@ -15,8 +15,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.nfcshare.app.data.Settings
 
-private val Light = lightColorScheme(primary = Color(0xFFAD4600), onPrimary = Color.White, primaryContainer = Color(0xFFFFE2CC), onPrimaryContainer = Color(0xFF633000), secondary = Color(0xFF5E625E), background = Color(0xFFFAF9F6), surface = Color(0xFFFAF9F6), surfaceContainer = Color(0xFFF0EFEB), surfaceContainerHigh = Color(0xFFEAE9E4), onSurface = Color(0xFF202321), outline = Color(0xFF797B76))
-private val Dark = darkColorScheme(primary = Color(0xFFFFAC73), onPrimary = Color(0xFF542400), primaryContainer = Color(0xFF65310E), onPrimaryContainer = Color(0xFFFFDEC7), secondary = Color(0xFFBEC7BD), background = Color(0xFF111411), surface = Color(0xFF111411), surfaceContainer = Color(0xFF1D211D), surfaceContainerHigh = Color(0xFF272C27), onSurface = Color(0xFFE4E8E0), outline = Color(0xFF8B9488))
+private val Light = lightColorScheme(primary = Color(0xFFAD4600), onPrimary = Color.White, primaryContainer = Color(0xFFFFE2CC), onPrimaryContainer = Color(0xFF633000), secondary = Color(0xFF5E625E), secondaryContainer = Color(0xFFFFE2CC), onSecondaryContainer = Color(0xFF633000), background = Color(0xFFFAF9F6), surface = Color(0xFFFAF9F6), surfaceContainer = Color(0xFFF0EFEB), surfaceContainerHigh = Color(0xFFEAE9E4), onSurface = Color(0xFF202321), outline = Color(0xFF797B76))
+private val Dark = darkColorScheme(primary = Color(0xFFFFAC73), onPrimary = Color(0xFF542400), primaryContainer = Color(0xFF65310E), onPrimaryContainer = Color(0xFFFFDEC7), secondary = Color(0xFFBEC7BD), secondaryContainer = Color(0xFF65310E), onSecondaryContainer = Color(0xFFFFDEC7), background = Color(0xFF111411), surface = Color(0xFF111411), surfaceContainer = Color(0xFF1D211D), surfaceContainerHigh = Color(0xFF272C27), onSurface = Color(0xFFE4E8E0), outline = Color(0xFF8B9488))
 @Composable fun NfcShareTheme(settings: Settings, content: @Composable () -> Unit) {
     val dark = settings.theme == "Oscuro" || (settings.theme == "Sistema" && isSystemInDarkTheme())
     val view = LocalView.current
